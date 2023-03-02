@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="search-box" placeholder="Search...">
+<ul id="search-results"></ul>
+</body>
+<script>
+  const searchBox = document.getElementById('search-box');
+const searchResults = document.getElementById('search-results');
+
+// 假設以下是搜尋的資料
+const data = [
+  'apple',
+  'banana',
+  'cherry',
+  'date',
+  'elderberry',
+  'fig',
+  'grape',
+  'honeydew'
+];
+
+// 監聽搜尋框輸入事件
+searchBox.addEventListener('input', function() {
+  // 取得搜尋關鍵字
+  const keyword = searchBox.value.toLowerCase();
+
+  // 清空搜尋結果
+  searchResults.innerHTML = '';
+
+  // 過濾符合關鍵字的資料
+  const filteredData = data.filter(item => item.toLowerCase().includes(keyword));
+
+  // 將符合條件的資料加入搜尋結果
+  filteredData.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    searchResults.appendChild(li);
+  });
+});
+</script>
+</html>
